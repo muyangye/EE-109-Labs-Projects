@@ -1,0 +1,24 @@
+			      EE 109 - Fall 2021
+		    Lab 7 - Rotary Encoders and Interrupts
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (1 point) Briefly explain why it is undesirable to read the two encoder
+input signals with two separate PINC statements.
+    When we are in ISR reading an input, let's say a, but meanwhile
+	we are twisting the rotary encoder so that b changes, if we read
+	a and b separately, b will become the new value when a is being
+	read. So we permantenly lost the original b's value. We should use
+	the original value because we are using gray codes which only change
+	1 bit at a time (in this case, a).
+
+
+2. (1 point) Briefly explain why updating the LCD display in your ISR could
+lead to undesirable behavior for this lab.
+	Because updating LCD display takes time. The whole point of ISR is very
+	fast emergency handling so that we can go back to normal routine without
+	any loss of track. However, if we update LCD display in ISR, we may miss
+	values changed when we are updating.
+

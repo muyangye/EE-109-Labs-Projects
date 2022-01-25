@@ -1,0 +1,61 @@
+			     EE 109  - Fall 2021
+				  Rangefinder
+
+
+Review Question 1 (Cost Analysis):
+
+Assume we are building 1000 units of this system.  Use the provided part
+numbers (see the webpage) and the digikey.com or jameco.com website to find the
+total **cost per unit** (again assume we build a quantity of 1000 units) for
+these range finding systems.  Itemize the part costs (list each part and its
+unit cost when bought in units of 1000) and then show the final cost per unit
+below.  Note: You only need to price the components used in the project (not
+all the components in your lab kit.  Also, you do not need to account for the
+cost of the circuit board or wires. In a real environment we would manufacture
+a PCB (Printed Circuit Board). As an optional task, you can search online for
+PCB manufacturers and what the costs and options are in creating a PCB.
+
+   Ultrasonic distance sensors: 1000 * $16.5 - discount = $14850 (Sparkfun)
+   Buttons: 2000 * $0.07 = $140 (Jameco)
+   Buzzers: 1000 * $1.15 = $1150 (Jameco)
+   Arduinos: 1000 * $19.95 = $19950 (Jameco)
+   LCDs: 1000 * $9.95 = $9950 (Jameco)
+   Inverters: 1000 * $0.49 = $490 (Jameco)
+   Nand gates: 1000 * $0.29 = $290 (Jameco)
+   RGB LEDs: 1000 * $0.3 = $300 (Modern Device)
+   680 Ohms resistors: 1000 * $0.02 = $20 (Jameco)
+   1300 Ohms resistors: 2000 * $0.02 = $40 (Jameco)
+   Total = $47180 (USC tuition is that expensive, hah?)
+
+
+Review Question 2 (Health/Safety/Reliability)
+
+Assume this system was to be used in a real industrial monitoring application.
+
+Considering reliability, health, and safety...
+
+ - What scenarios might you suggest testing (considering both HW and SW) 
+    before releasing the product for use? 
+   Ranked from the most important to least important in my opinion:
+      1. Overheating if provided excessive electricity. This test is to make sure that the decive doesn't have safety issue such as explode.
+      2. Test if the ultrasonic rangefinder works correctly.
+      3. Test if ISR works correctly and doesn't "stop" the main program.
+      4. Soundwave interference. This test is to determine the threshold of interference and write that threshold in the manual.
+      5. Unexpected user input. This test is to see what will happen if users "play with" all buttons(including Arduino's).
+      6. Extreme environment. Like 1. This test is to test the accuracy in such scenarios.
+      7. Physical damage. This test is to see if there is physical damage such as parts of arduino hit/cut, will the system still be able to work?
+      8. Software update testing. We may want to update the software after adding new functionalities/fixing bugs.
+      9. Buzzer testing. Make sure the buzzer only generates noise when a new actual measurement of distance that is below near threshold is done.
+
+ - How might you make your design more reliable? By reliability we don't just
+   mean keeping it running correctly (though you should consider that), but
+   also how you can detect that a connected component has failed to gracefully
+   handle such situations.  You can consider both HW and SW points of failure,
+   issues related to the operational environment, etc. and how to mitigate
+   those cases.
+      - Add a temperature sensor.
+      - Add a hardware monitor.
+      - The hardware monitor should send messages to both the user and the developer(us) and indicate which hardware fails when it detects a failure.
+      - Have a software update module available, we may want to update the software after adding new functionalities/fixing bugs.
+      - When encountering unexpected inputs from users, reboot the system.
+      - When overheating, shut down the system and wait for it to become cooler.

@@ -1,0 +1,52 @@
+			      EE 109  - Fall 2021
+			   Lab 8 - Digital Stopwatch
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+1. (2 points) Review the conceptual operation of a timer interrupt.
+
+  a. For a 16-bit timer with clock frequency of 16MHz (like the Arduino) and
+  prescalar of 64, how much time corresponds to a timer value of 2000?
+        16MHz * ??s / 64 = 2000. ?? = 0.008s.
+
+
+
+
+
+  b. With a clock frequency of 16MHz and prescalar of 8, what is the longest
+  amount of time we can track with an 8-bit hardware timer.
+        8-bit max = 255. 16MHz * ??s / 8 < 256. ?? = 0.000128s.
+
+
+
+
+
+2. (2 points) We want you to feel comfortable reading documentation to
+understand the operation of a device. To that end, open the ATmega328/P
+datasheet linked on our website from the Tools and Links Page. The Timer we
+have used also has the ability to make an output pin turn ON (set), OFF
+(clear), or Toggle when the timer reaches the OCR1A value (i.e. in addition to
+generating an interrupt, the hardware can automatically toggle or turn an
+output on or off). By searching the data sheet and using the information in
+section 16.11.1 (especially table 16-1) answer the following questions:
+
+  a. Which two pins can TIMER 1 (the 16-bit) timer control (i.e. what pins are
+  associated with OC1A and OC1B)?  Look at Figure 1.1 (upper right diagram of
+  the "28 PDIP" package) on page 12 of the data sheet, or Table 14-3, 14-6, or
+  14-9 to find this info.
+        PB2 and PB1.
+
+
+
+
+  b. In this lab we use TIMER1 in the "Clear Timer on Compare" or CTC mode.  In
+  this mode when the counter reaches the value in OCR1A register it generates
+  an interrupt and starts counting again from zero.  Using the information in
+  section 16.11.1 and table 16-1, describe what the OC1A and OC1B pins would do
+  when the timer reaches the OCR1A value if during initialization we used the
+  statement TCCR1A |= 0x60;
+        "Clear OC1B on Compare Match (Set output to low level)".
+        "Toggle OC1A on Compare Match".
+
+

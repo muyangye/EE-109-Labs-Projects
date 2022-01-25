@@ -1,0 +1,23 @@
+			     EE 109  - Fall 2021
+			 Lab 9 - Serial Communications
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (1 points) Briefly explain why a common GND signal is needed between
+transmitter and receiver devices.
+	Because a common GND provides the same low voltage reference for
+	transmitter and receiver.
+
+
+
+
+2. (2 points) The baud rate (e.g. 9600 bps) is the rate at which 1's and 0's
+are transmitted over the serial line.  Briefly explain why the data rate (rate
+at which useful data is transmitted/received) is less than the baud rate even
+with error-free transmission.
+	Because we need to send the start and stop bits so that Arduinos know when
+	to transmit/receive message, and those bits make the actual rate less.
+
+

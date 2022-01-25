@@ -1,0 +1,47 @@
+			      EE 109 - Fall 2021
+		     Lab 6 - Analog to Digital Conversion
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+
+1. (3 points) Review the conceptual operation of an ADC and use the given
+parameters to find the desired value.
+
+  a. Your 8-bit ADC has Hi and Lo reference voltages of 1V and 4V, what digital
+  number would result from sampling a 2.0V?
+        256 / 3 ≈ 85
+
+
+  b. Your 5-bit ADC has Hi and Lo reference voltages of 0V and 5V, what input
+  voltage would yield a digital number of 12?
+        5 * (12/32) = 1.875V
+
+
+  c.  Your 6-bit ADC has a Lo reference voltages of 2V. A voltage is sampled at
+  2.4V and the digital result is 26. What was the Hi reference voltage used by
+  the ADC?
+        2 + 0.4 * (64/26) ≈ 3V
+
+
+
+2. (1 point) We want you to feel comfortable reading documentation to
+understand the operation of a device.  To that end, open the ATmega328/P
+datasheet linked on our website from the Tools and Links Page and go to chapter
+24 regarding the ADC.  In our current lab, the ADC only takes samples when
+commanded through the ADSC bit in the ADCSRA register.  However, the ADC can be
+configured to take continuous samples based on some other triggering source.
+Read over the register bit descriptions of the ADCSRA register (especially bit
+5 = ADATE) and the ADCSRB register (especially bits ADTS[2:0]) described in
+sections 24.9.2 and 24.9.4, respectively.  In addition, in section 24.4,
+directly above Figure 24-4 is the text:
+
+   "In Free Running mode, a new conversion will be started immediately after
+   the conversion completes, while ADSC remains high."
+
+Now consider what effect setting the ADATE bit of ADCSRA to a 1 will have,
+assuming you don’t modify ADCSRB from its default reset value.  Briefly
+describe what the ADC module will do.
+        By setting ADATE to 1, ADC will sample based on ADTS values. However,
+        the default reset value for ADTS is 000, which means Free Running mode.
+        Therefore, ADC will sample continuously.

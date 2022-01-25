@@ -1,0 +1,26 @@
+			      EE 109  - Fall 2021
+			     Lab 5 - Traffic Light
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+1. (2 points) To ensure a date appears in the format: MM/DD, what snprintf()
+formatting string could be used to ensure dates like 6/9 are generated in a
+character buffer as 06/09.
+
+	char buf[17];
+	int m = 6; d = 9;
+	snprintf(buf, 17, "%02d/%02d", m, d);
+
+
+
+
+2. (1 point) You want to use snprintf to format strings containing dates in the
+form DD-MM-YYYY like 09-29-2021.  How many elements does the char array need to
+have for snprintf to be able to store the formatted string?
+
+	11.
+
+
+
+

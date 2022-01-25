@@ -1,0 +1,34 @@
+			      EE 109 - Fall 2021
+			 Lab 4 - Using the LCD Display
+
+Edit the document below to fill in your answers to the review problems at the
+end of the assignment web page.
+
+1 (2 points) We want you to feel comfortable reading documentation to
+understand the operation of a device. To that end, open the ATmega328/P
+datasheet linked on our website from the Tools and Links Page. Go to section
+14.2 and read over page 85. Note that "toggle" means flip to its opposite
+value, regardless of current value.
+
+What effect does writing a 1 to a PIN register bit have? Consider, how this
+might be used to generate the E signal pulse in your lcd_writenibble()
+function. Re-write the 3 lines of code you had to generate the E signal pulse
+for about 250 ns using the feature of writing a 1 to a PIN register bit. You
+may leave the middle line that is intended to simply delay as is. So just show
+the first line (statement) that turns the E signal on and then the last line
+that turns it off. Make sure you use the correct register, masking, etc.
+
+
+PINB ________|= (1 << 1);_____________
+PORTB |= (1 << PB1);  // original line to simply delay
+PINB _________|= (1 << 1);____________
+
+
+2. (1 point) Suppose we need to perform 3 concurrent tasks intermittently: Task
+A every 20 ms, Task B every 15 ms, and Task C every 40 ms. What delay should be
+used on each iteration of the main loop?
+	5ms since 20%5 == 15%5 == 40%5 == 0.
+ 
+
+
+
